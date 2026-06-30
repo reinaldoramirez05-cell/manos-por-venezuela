@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manos por Venezuela — Verified aid after the earthquake</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=Public+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --night:#1a2238;--night-2:#2b3656;--gold:#e8b23a;--gold-soft:#f3d98a;
+    --clay:#c1502e;--bone:#f6f1e7;--bone-2:#efe8d8;--ink:#22242b;--muted:#6b6557;--line:#ddd3c0;--ok:#3f7d5a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Public Sans',system-ui,sans-serif;background:var(--bone);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  header{background:var(--night);color:var(--bone);padding:14px 0;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Newsreader',serif;font-weight:600;font-size:1.18rem;letter-spacing:.2px}
+  .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(232,178,58,.18)}
+  .nav{display:flex;gap:22px;font-size:.9rem}
+  .nav a{color:rgba(246,241,231,.72);text-decoration:none;transition:color .15s}
+  .nav a:hover{color:var(--gold-soft)}
+  @media(max-width:680px){.bar{flex-wrap:wrap;gap:11px}.nav{order:3;width:100%;flex-wrap:wrap;gap:9px 18px;padding:9px 0 2px;margin-top:4px;border-top:1px solid rgba(255,255,255,.08)}}
+
+  .hero{background:radial-gradient(1200px 380px at 78% -40%, rgba(232,178,58,.16), transparent 60%),var(--night);color:var(--bone);padding:74px 0 80px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;margin-bottom:20px}
+  .eyebrow .live{width:7px;height:7px;border-radius:50%;background:var(--clay);box-shadow:0 0 0 0 rgba(193,80,46,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(193,80,46,.55)}70%{box-shadow:0 0 0 9px rgba(193,80,46,0)}100%{box-shadow:0 0 0 0 rgba(193,80,46,0)}}
+  h1{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(2.1rem,5.2vw,3.6rem);line-height:1.05;letter-spacing:-.5px;max-width:18ch;margin-bottom:20px}
+  h1 em{font-style:italic;color:var(--gold-soft)}
+  .lede{font-size:1.12rem;color:rgba(246,241,231,.82);max-width:54ch;margin-bottom:34px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:13px}
+  .btn{font-family:'Public Sans';font-weight:600;font-size:.96rem;padding:13px 24px;border-radius:9px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .12s,background .15s;display:inline-flex;align-items:center;gap:9px}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--gold);color:var(--night)}
+  .btn-primary:hover{background:var(--gold-soft)}
+  .btn-ghost{background:transparent;color:var(--bone);border-color:rgba(246,241,231,.28)}
+  .btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+
+  .impact{display:flex;flex-wrap:wrap;gap:30px;margin-top:54px;padding-top:30px;border-top:1px solid rgba(246,241,231,.13)}
+  .stat .n{font-family:'Newsreader',serif;font-size:1.85rem;color:var(--gold-soft);line-height:1}
+  .stat .l{font-size:.82rem;color:rgba(246,241,231,.6);margin-top:6px;max-width:24ch}
+
+  .truth{background:var(--bone-2);border-bottom:1px solid var(--line)}
+  .truth .wrap{display:flex;gap:18px;align-items:flex-start;padding:24px 22px}
+  .truth .mark{flex:none;width:42px;height:42px;border-radius:10px;background:var(--night);color:var(--gold);display:grid;place-items:center;font-family:'Newsreader',serif;font-size:1.3rem;font-weight:600}
+  .truth h3{font-family:'Newsreader',serif;font-weight:600;font-size:1.08rem;margin-bottom:3px}
+  .truth p{font-size:.95rem;color:var(--muted);max-width:78ch}
+  .truth strong{color:var(--clay)}
+
+  section{padding:60px 0}
+  .sec-head{margin-bottom:34px}
+  .sec-head .kicker{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);font-weight:600;margin-bottom:10px}
+  .sec-head h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(1.6rem,3.4vw,2.3rem);letter-spacing:-.3px;line-height:1.1}
+  .sec-head p{color:var(--muted);margin-top:12px;max-width:64ch;font-size:1.02rem}
+
+  .legend{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:26px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:12px}
+  .legend .item{display:flex;align-items:center;gap:9px;font-size:.86rem;color:var(--muted)}
+  .reach{flex:none;width:16px;height:16px;border-radius:50%;border:2px solid var(--ok);position:relative}
+  .reach.full{background:var(--ok)}
+  .reach.half{background:linear-gradient(90deg,var(--ok) 50%,transparent 50%)}
+  .reach.fund{border-color:var(--gold);background:linear-gradient(90deg,var(--gold) 50%,transparent 50%)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s,transform .15s}
+  .card:hover{border-color:var(--gold);box-shadow:0 8px 26px rgba(26,34,56,.08);transform:translateY(-2px)}
+  .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .card h3{font-family:'Newsreader',serif;font-weight:600;font-size:1.16rem;line-height:1.15}
+  .badge{flex:none;display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:600;padding:6px 10px;border-radius:20px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+  .badge .reach{width:13px;height:13px}
+  .card .desc{font-size:.92rem;color:var(--muted);flex:1;margin-bottom:16px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+  .tag{font-size:.72rem;color:var(--night-2);background:var(--bone-2);padding:4px 9px;border-radius:6px;font-weight:500}
+  .card .go{margin-top:auto;text-align:center;font-weight:600;font-size:.9rem;padding:11px;border-radius:9px;background:var(--night);color:var(--bone);text-decoration:none;transition:background .15s}
+  .card .go:hover{background:var(--night-2)}
+
+  .acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .act{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:22px}
+  .act .num{font-family:'Newsreader',serif;color:var(--clay);font-size:.95rem;font-weight:600;margin-bottom:8px}
+  .act h3{font-family:'Newsreader',serif;font-weight:600;font-size:1.06rem;margin-bottom:7px}
+  .act p{font-size:.9rem;color:var(--muted)}
+  .act a{color:var(--night);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold)}
+
+  .cifras-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .cgroup{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+  .cgroup .gh{font-family:'Newsreader',serif;font-weight:600;font-size:1.05rem;margin-bottom:14px;color:var(--ink);display:flex;align-items:center;gap:9px}
+  .cgroup .gh .d{flex:none;width:9px;height:9px;border-radius:50%;background:var(--clay)}
+  .crow{padding:11px 0;border-top:1px solid var(--line)}
+  .crow:first-of-type{border-top:none;padding-top:0}
+  .crow .n{font-family:'Newsreader',serif;font-size:1.5rem;color:var(--night);line-height:1.05}
+  .crow .l{font-size:.82rem;color:var(--muted);margin-top:5px;max-width:32ch}
+  .crow a{color:var(--night);text-decoration:underline;text-decoration-color:var(--gold)}
+  .cnote{margin-top:20px;font-size:.9rem;color:var(--muted);background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:15px 17px;max-width:84ch;line-height:1.6}
+  .cnote strong{color:var(--ink)}
+
+  footer{background:var(--night);color:rgba(246,241,231,.7);padding:44px 0;font-size:.86rem}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px}
+  footer .brand{color:var(--bone);font-size:1.05rem;margin-bottom:8px}
+  footer a{color:var(--gold-soft);text-decoration:none}
+  .disclaimer{max-width:56ch;line-height:1.6}
+  .updated{font-size:.78rem;color:rgba(246,241,231,.45);margin-top:14px}
+  /* keep header on one line */
+  .brand{white-space:nowrap;flex:none}
+  .nav{gap:16px;font-size:.87rem}
+  .nav a{white-space:nowrap}
+  /* language toggle */
+  .hend{display:flex;align-items:center;gap:13px}
+  .lang{display:inline-flex;align-items:center;font-size:.72rem;font-weight:700;border:1px solid rgba(246,241,231,.28);border-radius:7px;overflow:hidden;flex:none}
+  .lang a,.lang span{padding:5px 8px;text-decoration:none;color:rgba(246,241,231,.7);letter-spacing:.03em}
+  .lang a:hover{color:var(--gold-soft)}
+  .lang .on{background:var(--gold);color:var(--night)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand"><span class="dot"></span>Manos por Venezuela</div>
+    <nav class="nav">
+      <a href="#donar">Where to donate</a>
+      <a href="#reach">How we verify</a>
+      <a href="index.html">Resources</a>
+      <a href="centros.html">Centers</a>
+      <a href="buscar.html">Find a relative</a>
+    </nav>
+    <div class="hend">
+      <span class="lang"><a href="../donar.html" hreflang="es" lang="es" aria-label="Cambiar a español">ES</a><span class="on" aria-current="true" lang="en">EN</span></span>
+      <a href="#donar" class="btn btn-primary" style="padding:9px 18px;font-size:.86rem">Donate now</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="live"></span>June 24 earthquake · Active response</span>
+    <h1>You're far away. Your help <em>doesn't</em> have to be.</h1>
+    <p class="lede">A clear, verified guide for the Venezuelan diaspora. Every organization here is confirmed active, registered and —most importantly— able to get aid into Venezuela.</p>
+    <div class="cta-row">
+      <a href="#donar" class="btn btn-primary">See where to donate →</a>
+      <a href="#reach" class="btn btn-ghost">How do we know it arrives?</a>
+    </div>
+
+    <div class="impact" id="impact"><!-- highlighted figures — generated from cifras.js --></div>
+  </div>
+</div>
+
+<!-- TRUTH BANNER -->
+<div class="truth">
+  <div class="wrap">
+    <div class="mark">!</div>
+    <div>
+      <h3>Before you ship a box: money helps more than things</h3>
+      <p>Donations of clothes, food or water —however well-meant— <strong>clog supply chains and drive up costs</strong>. Organizations on the ground buy exactly what's needed, where it's needed, at lower cost. If you want to give, giving money is almost always the most effective.</p>
+    </div>
+  </div>
+</div>
+
+<!-- THE EMERGENCY IN FIGURES -->
+<section id="cifras">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">The emergency in figures</div>
+      <h2>The scale of the earthquake</h2>
+      <p>A sober snapshot of the June 24 quake. The figures change often; below we say what they mean and what they don't.</p>
+    </div>
+    <div class="cifras-grid" id="cifrasGrid"><!-- generated from cifras.grupos --></div>
+    <div class="cnote" id="cifrasNota"><!-- generated from cifras.nota --></div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section id="donar">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Verified organizations</div>
+      <h2>Where to donate with confidence</h2>
+      <p>Each is a registered organization with a proven presence in the response. The badge shows whether it operates <em>inside</em> Venezuela or funds those who do.</p>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="legend" id="reach">
+      <div class="item"><span class="reach full"></span><strong style="color:var(--ink)">Operates in Venezuela</strong> — local teams or partners on the ground</div>
+      <div class="item"><span class="reach fund"></span><strong style="color:var(--ink)">Funds the response</strong> — supports local response teams</div>
+    </div>
+
+    <div class="grid" id="orgGrid"><!-- cards injected by JS --></div>
+  </div>
+</section>
+
+<!-- ACTIONS -->
+<section id="acciones" style="background:var(--bone-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Beyond donating</div>
+      <h2>Other real ways to help</h2>
+      <p>Donating isn't the only thing that matters. From Austin, Madrid or Bogotá, this counts too.</p>
+    </div>
+    <div class="acts">
+      <div class="act">
+        <div class="num">Spread the word</div>
+        <h3>Amplify verified needs</h3>
+        <p>Share reliable sources, not rumors. With the media blackout inside the country, clear information from outside saves lives.</p>
+      </div>
+      <div class="act">
+        <div class="num">Airlines</div>
+        <h3>Donate your miles</h3>
+        <p>American, Southwest or Alaska miles can move rescue teams to the area through <a href="https://airlinkflight.org" target="_blank" rel="noopener">Airlink</a>.</p>
+      </div>
+      <div class="act">
+        <div class="num">Supplies</div>
+        <h3>Only what's requested</h3>
+        <p>If you're going to send goods, do it only when an organization asks — with shipping and customs arranged in advance.</p>
+      </div>
+      <div class="act">
+        <div class="num">Available</div>
+        <h3>Find a relative</h3>
+        <p>A guide to register and locate missing people with the Red Cross / ICRC and citizen platforms. <a href="buscar.html">Open the search guide →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand">Manos por Venezuela</div>
+      <p class="disclaimer">An independent diaspora initiative. We don't raise money or receive donations: we only connect people with verified organizations that do. Always verify before donating.</p>
+      <p class="updated">Last updated: June 28, 2026 · Sources: U.S. State Dept., BBB Give.org, UNICEF, IRC, CRS</p>
+    </div>
+    <!-- Suggest a verified source (Google Form): paused before launch; restore from NOTES.md -->
+  </div>
+</footer>
+
+<script src="../cifras.js"></script>
+<script>
+  const C = cifrasFor('en');
+  document.getElementById('impact').innerHTML = C.hero.map(h =>
+    `<div class="stat"><div class="n">${h.n}</div><div class="l">${h.l}</div></div>`).join('');
+
+  document.getElementById('cifrasGrid').innerHTML = C.grupos.map(g => `
+    <div class="cgroup">
+      <div class="gh"><span class="d"></span>${g.titulo}</div>
+      ${g.filas.map(f => `<div class="crow"><div class="n">${f.n}</div><div class="l">${f.l}</div></div>`).join('')}
+    </div>`).join('');
+
+  document.getElementById('cifrasNota').innerHTML =
+    `<strong>What these figures mean.</strong> ${C.nota} Figures as of ${C.actualizado}.`;
+
+  // Verified orgs — sourced from State Dept, BBB Give.org, and direct org pages (June 2026).
+  const orgs = [
+    {
+      name:"Catholic Relief Services",
+      reach:"full",
+      desc:"Works through Caritas Venezuela and the local Church to provide shelter, clean water, food and medical care.",
+      tags:["Local partners","501(c)(3)","Shelter + health"],
+      url:"https://www.crs.org/donate/venezuela-earthquake"
+    },
+    {
+      name:"UNICEF USA",
+      reach:"full",
+      desc:"Decades of presence in Venezuela. Shipping 48 tons of medical and water-purification equipment. Focused on children.",
+      tags:["Children","Water & sanitation","On the ground"],
+      url:"https://www.unicefusa.org/stories/venezuela-earthquakes-children-need-help-now"
+    },
+    {
+      name:"International Rescue Committee",
+      reach:"full",
+      desc:"Teams on the ground delivering health, nutrition, water and protection. High ratings from watchdogs.",
+      tags:["Health","Nutrition","90+ years"],
+      url:"https://www.rescue.org/article/how-help-survivors-earthquakes-venezuela"
+    },
+    {
+      name:"World Central Kitchen",
+      reach:"full",
+      desc:"Its relief team is in Caracas with local partners serving fresh meals to displaced families and rescuers.",
+      tags:["Meals","Caracas","Local partners"],
+      url:"https://wck.org"
+    },
+    {
+      name:"Jesuit Refugee Service / USA",
+      reach:"full",
+      desc:"Prior presence in Venezuela. Coordinates with local teams for shelter, care and psychosocial support.",
+      tags:["Shelter","Psychosocial support","Local partners"],
+      url:"https://www.jrsusa.org/jrsusa-org-venezuela-earthquake-emergency/"
+    },
+    {
+      name:"Direct Relief",
+      reach:"full",
+      desc:"Mobilizes emergency medical aid. 100% of what's designated for Venezuela is used solely for that response.",
+      tags:["Medical supplies","100% designated"],
+      url:"https://www.directrelief.org"
+    },
+    {
+      name:"Global Empowerment Mission",
+      reach:"full",
+      desc:"With I Love Venezuela, recon and response teams packing food, water, hygiene kits and medical supplies.",
+      tags:["I Love Venezuela","Hygiene kits","On the ground"],
+      url:"https://www.globalempowermentmission.org"
+    },
+    {
+      name:"Team Rubicon",
+      reach:"fund",
+      desc:"Operations center activated, deploying medical teams. Supports rescue operations on the ground.",
+      tags:["Medical teams","Veterans","Rescue"],
+      url:"https://teamrubiconusa.org/news-and-stories/how-to-help-venezuela-earthquake-survivors/"
+    },
+    {
+      name:"Samaritan's Purse",
+      reach:"full",
+      desc:"Partner designated by the U.S. State Department for the earthquake response in Venezuela.",
+      tags:["State Dept. partner","Disaster relief"],
+      url:"https://www.samaritanspurse.org"
+    }
+  ];
+
+  const reachLabel = { full:"Operates in Venezuela", fund:"Funds the response" };
+
+  const grid = document.getElementById('orgGrid');
+  grid.innerHTML = orgs.map(o => `
+    <article class="card">
+      <div class="card-top">
+        <h3>${o.name}</h3>
+        <span class="badge"><span class="reach ${o.reach==='full'?'full':'fund'}"></span>${reachLabel[o.reach]}</span>
+      </div>
+      <p class="desc">${o.desc}</p>
+      <div class="tags">${o.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <a class="go" href="${o.url}" target="_blank" rel="noopener">Donate at ${o.name.split(' ')[0]} →</a>
+    </article>
+  `).join('');
+</script>
+
+</body>
+</html>

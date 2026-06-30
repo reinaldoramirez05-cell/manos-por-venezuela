@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Punto de partida para ayudar tras el terremoto del 24 de junio en Venezuela: lleva una donación a un centro, busca a un familiar o dona, y consulta el directorio completo de recursos verificados y comunitarios.">
+<title>Cómo ayudar — Manos por Venezuela</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=Public+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --night:#1a2238;--night-2:#2b3656;--gold:#e8b23a;--gold-soft:#f3d98a;--gold-ink:#7a5c10;
+    --clay:#c1502e;--bone:#f6f1e7;--bone-2:#efe8d8;--ink:#22242b;--muted:#6b6557;--line:#ddd3c0;--ok:#3f7d5a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Public Sans',system-ui,sans-serif;background:var(--bone);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  header{background:var(--night);color:var(--bone);padding:14px 0;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Newsreader',serif;font-weight:600;font-size:1.18rem;letter-spacing:.2px;color:var(--bone);text-decoration:none}
+  .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(232,178,58,.18)}
+  .nav{display:flex;gap:22px;font-size:.9rem}
+  .nav a{color:rgba(246,241,231,.72);text-decoration:none;transition:color .15s}
+  .nav a:hover{color:var(--gold-soft)}
+  @media(max-width:760px){.bar{flex-wrap:wrap;gap:11px}.nav{order:3;width:100%;flex-wrap:wrap;gap:9px 18px;padding:9px 0 2px;margin-top:4px;border-top:1px solid rgba(255,255,255,.08)}}
+
+  .hero{background:radial-gradient(1200px 380px at 78% -40%, rgba(232,178,58,.16), transparent 60%),var(--night);color:var(--bone);padding:52px 0 46px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;margin-bottom:18px}
+  .eyebrow .seek{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+  h1{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.05;letter-spacing:-.5px;max-width:18ch;margin-bottom:16px}
+  h1 em{font-style:italic;color:var(--gold-soft)}
+  .lede{font-size:1.06rem;color:rgba(246,241,231,.82);max-width:60ch;margin-bottom:28px}
+
+  /* primary actions (up top) */
+  .actions{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .action{display:flex;flex-direction:column;gap:7px;background:rgba(246,241,231,.05);border:1px solid rgba(246,241,231,.15);border-radius:14px;padding:20px;text-decoration:none;color:var(--bone);transition:border-color .15s,background .15s,transform .15s}
+  .action:hover{border-color:var(--gold-soft);background:rgba(246,241,231,.10);transform:translateY(-3px)}
+  .action .ak{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);font-weight:700}
+  .action .at{font-family:'Newsreader',serif;font-weight:600;font-size:1.22rem;line-height:1.1}
+  .action .ad{font-size:.88rem;color:rgba(246,241,231,.72);flex:1}
+  .action .ago{margin-top:4px;color:var(--gold-soft);font-weight:600;font-size:.86rem}
+  @media(max-width:760px){.actions{grid-template-columns:1fr}}
+
+  /* stats ticker */
+  .ticker{display:flex;align-items:stretch;background:var(--night-2);color:var(--bone);border-bottom:1px solid var(--line);overflow:hidden}
+  .ticker-tag{flex:none;display:flex;align-items:center;gap:8px;padding:0 20px;background:var(--clay);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+  .ticker-vp{flex:1;overflow:hidden;position:relative}
+  .ticker-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:ticker 46s linear infinite}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  .titem{display:inline-flex;align-items:baseline;gap:9px;padding:13px 24px;border-left:1px solid rgba(246,241,231,.12)}
+  .titem .tn{font-family:'Newsreader',serif;font-size:1.08rem;font-weight:600;color:var(--gold-soft)}
+  .titem .tl{font-size:.84rem;color:rgba(246,241,231,.72)}
+  @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.ticker-track{animation:none}.ticker-vp{overflow-x:auto}}
+
+  .reality{background:var(--bone-2);border-bottom:1px solid var(--line)}
+  .reality .wrap{display:flex;gap:20px;align-items:flex-start;padding:30px 22px}
+  .reality .mark{flex:none;width:46px;height:46px;border-radius:11px;background:var(--night);color:var(--gold);display:grid;place-items:center;font-family:'Newsreader',serif;font-size:1.4rem;font-weight:600}
+  .reality h3{font-family:'Newsreader',serif;font-weight:600;font-size:1.18rem;margin-bottom:8px;color:var(--ink)}
+  .reality p{font-size:.95rem;color:var(--muted);max-width:80ch}
+  .reality strong{color:var(--clay)}
+  .legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:11px}
+  .legend .item{display:flex;align-items:center;gap:9px;font-size:.84rem;color:var(--muted)}
+  .reach{flex:none;width:15px;height:15px;border-radius:50%;border:2px solid var(--ok)}
+  .reach.verified{border-color:var(--gold);background:var(--gold)}
+  .reach.citizen{border-color:var(--clay);background:linear-gradient(90deg,var(--clay) 50%,transparent 50%)}
+
+  /* category jump nav */
+  .catbar{background:#fff;border-bottom:1px solid var(--line)}
+  .catbar .wrap{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;padding:14px 22px}
+  .catbar .lbl{font-size:.74rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-right:4px}
+  .catbar a{font-size:.85rem;font-weight:600;color:var(--night);text-decoration:none;background:var(--bone);border:1px solid var(--line);border-radius:20px;padding:6px 13px;transition:border-color .15s,background .15s}
+  .catbar a:hover{border-color:var(--gold);background:var(--bone-2)}
+
+  section{padding:54px 0}
+  .sec-head{margin-bottom:28px}
+  .sec-head .kicker{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);font-weight:600;margin-bottom:10px}
+  .sec-head .kicker.gold{color:var(--gold-ink)}
+  .sec-head h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(1.5rem,3.2vw,2.1rem);letter-spacing:-.3px;line-height:1.1}
+  .sec-head p{color:var(--muted);margin-top:11px;max-width:64ch;font-size:1rem}
+  .sec-head a{color:var(--night);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s,transform .15s}
+  .card:hover{border-color:var(--gold);box-shadow:0 8px 26px rgba(26,34,56,.08);transform:translateY(-2px)}
+  .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+  .card h3{font-family:'Newsreader',serif;font-weight:600;font-size:1.12rem;line-height:1.15}
+  .card .area{font-size:.78rem;color:var(--muted);margin-top:3px}
+  .badge{flex:none;display:inline-flex;align-items:center;gap:7px;font-size:.71rem;font-weight:600;padding:6px 10px;border-radius:20px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+  .badge .reach{width:12px;height:12px}
+  .desc{font-size:.9rem;color:var(--muted);flex:1;margin-bottom:14px}
+  .disc{background:var(--bone-2);border:1px solid var(--line);border-left:3px solid var(--clay);border-radius:9px;padding:10px 12px;font-size:.82rem;color:var(--muted);margin-bottom:14px}
+  .disc strong{color:var(--clay)}
+  .go{margin-top:auto;text-align:center;font-weight:600;font-size:.88rem;padding:11px;border-radius:9px;background:var(--night);color:var(--bone);text-decoration:none;transition:background .15s}
+  .go:hover{background:var(--night-2)}
+  .go.soft{background:var(--bone-2);color:var(--night);border:1px solid var(--line)}
+  .go.soft:hover{background:#fff;border-color:var(--gold)}
+
+  .accounts{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+  .acct{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;transition:border-color .15s,transform .15s}
+  .acct:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .acct .org{font-family:'Newsreader',serif;font-weight:600;font-size:1.05rem}
+  .acct .at{color:var(--clay);font-weight:600;font-size:.9rem;margin-top:2px}
+  .acct .ad{font-size:.86rem;color:var(--muted);margin:10px 0 14px;flex:1}
+  .acct .follow{text-align:center;font-weight:600;font-size:.84rem;padding:9px;border-radius:8px;background:var(--bone-2);color:var(--night);text-decoration:none;border:1px solid var(--line);transition:background .15s,border-color .15s}
+  .acct .follow:hover{background:#fff;border-color:var(--gold)}
+
+  footer{background:var(--night);color:rgba(246,241,231,.7);padding:44px 0;font-size:.86rem}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px}
+  footer .brand{color:var(--bone);font-size:1.05rem;margin-bottom:8px}
+  footer a{color:var(--gold-soft);text-decoration:none}
+  .disclaimer{max-width:58ch;line-height:1.6}
+  .updated{font-size:.78rem;color:rgba(246,241,231,.45);margin-top:14px;max-width:62ch}
+  .flinks{text-align:right;min-width:200px;display:flex;flex-direction:column;gap:7px}
+  /* keep header on one line after font swap */
+  .brand{white-space:nowrap;flex:none}
+  .nav{gap:16px;font-size:.87rem}
+  .nav a{white-space:nowrap}
+  /* language toggle */
+  .hend{display:flex;align-items:center;gap:13px}
+  .lang{display:inline-flex;align-items:center;font-size:.72rem;font-weight:700;border:1px solid rgba(246,241,231,.28);border-radius:7px;overflow:hidden;flex:none}
+  .lang a,.lang span{padding:5px 8px;text-decoration:none;color:rgba(246,241,231,.7);letter-spacing:.03em}
+  .lang a:hover{color:var(--gold-soft)}
+  .lang .on{background:var(--gold);color:var(--night)}
+  /* dedicatoria · Tsunami */
+  .dedi{position:fixed;left:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:10px;background:rgba(26,34,56,.94);color:var(--bone);border:1px solid rgba(232,178,58,.4);border-radius:14px;padding:9px 13px 9px 11px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .15s,border-color .15s}
+  .dedi:hover{transform:translateY(-2px);border-color:var(--gold-soft)}
+  .dedi .paw{font-size:1.25rem;flex:none;line-height:1}
+  .dedi .t{display:flex;flex-direction:column;line-height:1.18}
+  .dedi .k{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,231,.55);font-weight:700}
+  .dedi .t b{font-family:'Newsreader',serif;font-weight:600;font-size:1rem;color:var(--gold-soft)}
+  .dedi .s{font-size:.68rem;color:rgba(246,241,231,.7)}
+  @media(max-width:560px){.dedi{left:10px;bottom:10px;padding:8px 11px 8px 10px}.dedi .s{display:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><span class="dot"></span>Manos por Venezuela</a>
+    <nav class="nav">
+      <a href="centros.html">Centros de acopio</a>
+      <a href="buscar.html">Buscar a un familiar</a>
+      <a href="#directorio">Directorio</a>
+    </nav>
+    <div class="hend"><span class="lang"><span class="on" aria-current="true" lang="es">ES</span><a href="en/index.html" hreflang="en" lang="en" aria-label="Switch to English">EN</a></span><a href="donar.html" class="action" style="padding:9px 16px;border-color:var(--gold);background:var(--gold);color:var(--night);font-weight:600;font-size:.84rem;flex-direction:row">Donar y ayudar →</a></div>
+  </div>
+</header>
+
+<!-- HERO · acción primero -->
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="seek"></span>Terremoto del 24 de junio · Cómo ayudar</span>
+    <h1>Empieza por <em>aquí</em></h1>
+    <p class="lede">Lo esencial, de una vez: lleva una donación a un centro, busca a un ser querido o dona a una organización verificada. Debajo, el directorio completo por categoría.</p>
+    <div class="actions">
+      <a class="action" href="centros.html">
+        <span class="ak">Llevar ayuda</span>
+        <span class="at">Centros de acopio</span>
+        <span class="ad">Dónde dejar alimentos, agua o medicinas cerca de ti — Caracas, La Guaira y El Junquito.</span>
+        <span class="ago">Ver centros →</span>
+      </a>
+      <a class="action" href="buscar.html">
+        <span class="ak">Personas</span>
+        <span class="at">Buscar a un familiar</span>
+        <span class="ad">Registra o localiza a alguien con los canales oficiales y ciudadanos, con seguridad.</span>
+        <span class="ago">Empezar la búsqueda →</span>
+      </a>
+      <a class="action" href="donar.html">
+        <span class="ak">Donar</span>
+        <span class="at">Dónde donar</span>
+        <span class="ad">Organizaciones verificadas que sí hacen llegar la ayuda a Venezuela.</span>
+        <span class="ago">Ver dónde donar →</span>
+      </a>
+    </div>
+    <!-- Sugerir un recurso (Google Form): pausado antes del lanzamiento; restaurar desde NOTES.md -->
+  </div>
+</div>
+
+<!-- TICKER · balance en cifras -->
+<div class="ticker" aria-label="Balance del terremoto del 24 de junio">
+  <span class="ticker-tag">Balance 24-J</span>
+  <div class="ticker-vp"><div class="ticker-track" id="tickerTrack"><!-- generado desde cifras.js --></div></div>
+</div>
+
+<!-- REALITY + LEGEND -->
+<div class="reality" id="directorio">
+  <div class="wrap">
+    <div class="mark">!</div>
+    <div>
+      <h3>Antes de donar dinero, verifica</h3>
+      <p>Reunimos lo que la gente está compartiendo y lo cruzamos con cada sitio. Aun así, <strong>tras un desastre aparecen campañas y cuentas falsas</strong>. Prefiere organizaciones con historia y registro; si una pide dinero y no muestra quién está detrás, confírmalo antes de aportar. Abajo lo decimos claro en cada tarjeta.</p>
+      <div class="legend">
+        <div class="item"><span class="reach verified"></span><strong style="color:var(--ink)">Verificado / institucional</strong> — organización registrada o con historial comprobable</div>
+        <div class="item"><span class="reach citizen"></span><strong style="color:var(--ink)">Comunitario · sin verificar</strong> — iniciativa ciudadana o voluntaria; útil, pero confírmala</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REPORTES EN VIVO -->
+<section id="envivo" style="background:var(--bone-2);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">En vivo · comunidad</div>
+      <h2>Reportes en vivo de la comunidad</h2>
+      <p>La capa que cambia hora a hora: dónde hay medicinas, agua, alojamiento o equipos ayudando. Son plataformas comunitarias —no oficiales— así que verifica antes de actuar.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-top"><div><h3>Coordinación y mapa en vivo</h3><div class="area">Hazlo Hoy · iniciativa ciudadana</div></div><span class="badge"><span class="reach citizen"></span>Comunitario</span></div>
+        <p class="desc">Plataforma donde la gente marca daños, necesidades y dónde se reparte ayuda en tiempo real.</p>
+        <a class="go soft" href="https://terremoto.hazlohoy.org/" target="_blank" rel="noopener noreferrer">Abrir el mapa en vivo →</a>
+      </article>
+      <article class="card">
+        <div class="card-top"><div><h3>Puertas Abiertas VZLA</h3><div class="area">Viviendas solidarias</div></div><span class="badge"><span class="reach citizen"></span>Comunitario</span></div>
+        <p class="desc">Red comunitaria donde la gente ofrece alojamiento temporal a familias que lo perdieron todo, y quien lo necesita puede buscarlo.</p>
+        <div class="disc">Comunitaria y sin verificar. Coordina con cuidado y por canales seguros antes de alojar o ser alojado.</div>
+        <a class="go soft" href="https://puertasabiertasvzla.org/" target="_blank" rel="noopener noreferrer">Abrir Puertas Abiertas →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY JUMP -->
+<div class="catbar">
+  <div class="wrap">
+    <span class="lbl">Ir a</span>
+    <a href="#donaciones">Donaciones</a>
+    <a href="#ninos">Niños</a>
+    <a href="#desaparecidos">Desaparecidos</a>
+    <a href="#salud">Salud</a>
+    <a href="#ingenieria">Ingeniería</a>
+    <a href="#mascotas">Mascotas</a>
+  </div>
+</div>
+
+<!-- DONACIONES -->
+<section id="donaciones">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker gold">Donaciones</div>
+      <h2>Donar dinero</h2>
+      <p>Campañas y fundaciones de emergencia. Para organizaciones venezolanas ya verificadas con presencia dentro del país, mira también <a href="donar.html">Dónde donar</a>.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-top">
+          <div><h3>We Love Foundation</h3><div class="area">EE. UU. · 501(c)(3) · antes I Love Venezuela</div></div>
+          <span class="badge"><span class="reach verified"></span>Verificado</span>
+        </div>
+        <p class="desc">Fundación paraguas con estatus 501(c)(3) que canaliza fondos a organizaciones aliadas. Activó una campaña de emergencia para las víctimas del terremoto.</p>
+        <a class="go" href="https://www.welove.foundation/" target="_blank" rel="noopener noreferrer">Ir al sitio y donar →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div><h3>Misiones Salesianas</h3><div class="area">España · ONG registrada (R2800680G)</div></div>
+          <span class="badge"><span class="reach verified"></span>Verificado</span>
+        </div>
+        <p class="desc">ONG salesiana con presencia en Venezuela desde 1894 (~30 obras). Respuesta de emergencia para niños, jóvenes y familias afectadas.</p>
+        <a class="go" href="https://misionessalesianas.org/emergencia-terremotos-en-venezuela/" target="_blank" rel="noopener noreferrer">Ir a la campaña →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div><h3>Sun.Risas — Venezuela Earthquake Relief</h3><div class="area">Doral, Florida (EE. UU.)</div></div>
+          <span class="badge"><span class="reach citizen"></span>Sin verificar</span>
+        </div>
+        <p class="desc">Campaña de respuesta de emergencia de Sun.Risas Inc, procesada por la plataforma Classy.</p>
+        <div class="disc"><strong>Verifica antes de donar:</strong> el sitio no muestra su registro como organización sin fines de lucro (EIN). Confírmalo antes de enviar dinero.</div>
+        <a class="go" href="https://fundraise.sunrisas.org/campaign/815513/donate" target="_blank" rel="noopener noreferrer">Ver la campaña →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div><h3>The House Project</h3><div class="area">Opera en varios países, incl. Venezuela</div></div>
+          <span class="badge"><span class="reach citizen"></span>Iniciativa</span>
+        </div>
+        <p class="desc">Proyecto que da comida, salud, refugio y educación a comunidades vulnerables; campaña activa por el terremoto. Donaciones vía Shopify.</p>
+        <div class="disc">No publica su registro formal como ONG ni los nombres de su directiva. Si decides donar, hazlo con cuidado.</div>
+        <a class="go" href="https://thehouse-project.org/" target="_blank" rel="noopener noreferrer">Ir al sitio →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div><h3>Hazlo Hoy · Venezuela Ayuda</h3><div class="area">Iniciativa ciudadana (Venezuela)</div></div>
+          <span class="badge"><span class="reach citizen"></span>Comunitario</span>
+        </div>
+        <p class="desc">Plataforma ciudadana independiente —no oficial— que coordina ayuda: mapa de daños, desaparecidos, voluntarios y aliados (Yummy, SismoAyuda VE). Es honesta sobre su independencia.</p>
+        <a class="go soft" href="https://terremoto.hazlohoy.org/" target="_blank" rel="noopener noreferrer">Ir al sitio →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- NIÑOS -->
+<section id="ninos" style="background:var(--bone-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Ayuda para niños</div>
+      <h2>Para la niñez</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-top">
+          <div><h3>Hogar Bambi</h3><div class="area">Caracas · @hogarbambi</div></div>
+          <span class="badge"><span class="reach verified"></span>Verificado</span>
+        </div>
+        <p class="desc">Cuida a niños y adolescentes de 0 a 18 años separados de su familia. Recibe insumos en San Bernardino y donaciones por Zelle.</p>
+        <a class="go" href="centros.html#hogar-bambi">Ver cómo ayudar →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div><h3>Misiones Salesianas</h3><div class="area">Niños, jóvenes y familias</div></div>
+          <span class="badge"><span class="reach verified"></span>Verificado</span>
+        </div>
+        <p class="desc">Obra salesiana con casi 130 años en Venezuela; acompaña a menores y familias desplazadas y repara escuelas y centros dañados.</p>
+        <a class="go" href="https://misionessalesianas.org/emergencia-terremotos-en-venezuela/" target="_blank" rel="noopener noreferrer">Ir a la campaña →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div><h3>ASONACOP</h3><div class="area">Red de Consejos de Protección (Venezuela)</div></div>
+          <span class="badge"><span class="reach verified"></span>Institucional</span>
+        </div>
+        <p class="desc">Red nacional que articula la protección de niños y adolescentes a través de los Consejos de Protección — son quienes refieren casos a hogares como Bambi.</p>
+        <div class="disc">Es un organismo de articulación y protección, <strong>no un canal de donación directa</strong>. Útil para orientación y reportes.</div>
+        <a class="go soft" href="https://asonacop.com/" target="_blank" rel="noopener noreferrer">Ir al sitio →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DESAPARECIDOS -->
+<section id="desaparecidos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Desaparecidos</div>
+      <h2>Buscar y reportar personas</h2>
+      <p>Para hacerlo con seguridad —y con los canales oficiales como la Cruz Roja / ICRC— usa nuestra guía completa en <a href="buscar.html">Buscar a un familiar</a>. Aquí queda el registro ciudadano que la gente más usa.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-top">
+          <div><h3>Desaparecidos Terremoto Venezuela</h3><div class="area">Registro ciudadano</div></div>
+          <span class="badge"><span class="reach citizen"></span>Sin verificar</span>
+        </div>
+        <p class="desc">Plataforma muy usada para registrar y buscar personas: alta de casos, búsqueda por nombre y aviso cuando alguien aparece.</p>
+        <div class="disc">Comunitaria y <strong>sin verificar</strong>: la prensa no logró contactar a quien la opera. Si el sitio no carga, está saturado — no ha desaparecido. Confirma siempre por otra vía.</div>
+        <a class="go" href="https://desaparecidosterremotovenezuela.com/" target="_blank" rel="noopener noreferrer">Ir al registro →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SALUD -->
+<section id="salud" style="background:var(--bone-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker gold">Salud &amp; medicina</div>
+      <h2>Salud, medicinas y alimentación</h2>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-top">
+          <div><h3>International Medical Corps</h3><div class="area">Internacional · 501(c)(3) · desde 1984</div></div>
+          <span class="badge"><span class="reach verified"></span>Verificado</span>
+        </div>
+        <p class="desc">ONG médica global, en Venezuela desde 2019. Tras el terremoto despliega equipos médicos móviles, medicinas e insumos, y hospitales de campaña si se requieren.</p>
+        <a class="go" href="https://internationalmedicalcorps.org/emergency-response/venezuela-earthquakes/" target="_blank" rel="noopener noreferrer">Ir al sitio y donar →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div><h3>Alimenta la Solidaridad</h3><div class="area">Venezuela · 501(c)(3) · comedores</div></div>
+          <span class="badge"><span class="reach verified"></span>Verificado</span>
+        </div>
+        <p class="desc">Comedores comunitarios para la niñez: más de 24 millones de platos servidos en 15 estados.</p>
+        <div class="disc">Organización seria, pero <strong>anunció una pausa de operaciones en mayo de 2026</strong> por la nueva ley de ONG. Aún recibe donaciones — confirma su estado actual antes de aportar.</div>
+        <a class="go soft" href="https://alimentalasolidaridad.org/es/inicio/" target="_blank" rel="noopener noreferrer">Ir al sitio →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- INGENIERIA -->
+<section id="ingenieria">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Ingeniería y arquitectura</div>
+      <h2>¿Es seguro tu edificio?</h2>
+      <p>Herramientas para evaluar daños estructurales. Ninguna sustituye una inspección oficial presencial, pero ayudan a orientarte rápido.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-top">
+          <div><h3>SismoAyuda VE</h3><div class="area">Ingenieros y arquitectos voluntarios</div></div>
+          <span class="badge"><span class="reach citizen"></span>Voluntario</span>
+        </div>
+        <p class="desc">Subes fotos de los daños y un equipo de ingenieros (diáspora, por Hacha y Machete) te da una evaluación preliminar de habitabilidad según normas ATC-20 y EMS-98. Gratis y sin registro.</p>
+        <div class="disc">Es una <strong>orientación preliminar a distancia</strong>: no reemplaza una inspección oficial presencial. La decisión final la dan las autoridades.</div>
+        <a class="go" href="https://www.sismoayudave.com/" target="_blank" rel="noopener noreferrer">Reportar un edificio →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div><h3>Mapa de Daños Venezuela</h3><div class="area">terremotovenezuela.com</div></div>
+          <span class="badge"><span class="reach citizen"></span>Sin verificar</span>
+        </div>
+        <p class="desc">Mapa y buscador rápido para documentar y ubicar daños reportados en el país.</p>
+        <div class="disc">No identifica quién lo opera ni declara afiliación oficial. Úsalo como referencia, no como fuente verificada.</div>
+        <a class="go soft" href="https://terremotovenezuela.com/" target="_blank" rel="noopener noreferrer">Ir al sitio →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div><h3>Pilar VZLA</h3><div class="area">Evaluación estructural · auto-triaje</div></div>
+          <span class="badge"><span class="reach citizen"></span>Voluntario</span>
+        </div>
+        <p class="desc">Respondes unas preguntas sobre tu vivienda y recibes un semáforo (verde / amarillo / rojo) con una orientación preliminar según criterios ATC-20. Algunos casos los revisan ingenieros.</p>
+        <div class="disc">Es una <strong>orientación preliminar de auto-evaluación</strong>: no reemplaza la inspección de un ingeniero estructural.</div>
+        <a class="go" href="https://pilarvzla.com/" target="_blank" rel="noopener noreferrer">Evaluar mi vivienda →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MASCOTAS -->
+<section id="mascotas" style="background:var(--bone-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Mascotas</div>
+      <h2>Para los animales</h2>
+      <p>Cuentas activas en la emergencia. Verifica el ✓ y que la cuenta sea la auténtica antes de aportar.</p>
+    </div>
+    <div class="accounts">
+      <article class="acct">
+        <div class="org">Perros Extremos</div>
+        <div class="at">@perrosextremos</div>
+        <p class="ad">Brigada canina de rescate (K-9). Su perra Tsunami —rescatada del maltrato— ha ayudado a localizar a más de 30 personas entre los escombros tras el terremoto.</p>
+        <a class="follow" href="https://www.instagram.com/perrosextremos/" target="_blank" rel="noopener noreferrer">Ver en Instagram ↗</a>
+      </article>
+      <article class="acct">
+        <div class="org">Laika Mascotas</div>
+        <div class="at">@laikamascotas</div>
+        <p class="ad">Tienda de mascotas detrás de la campaña “Una garra por Venezuela”: puntos de acopio en Colombia para comida y medicinas de perros y gatos, con donaciones igualadas.</p>
+        <div class="disc" style="margin:0 0 14px">Campaña con sede en Colombia y plazo corto (25–30 de junio). Confirma su vigencia.</div>
+        <a class="follow" href="https://www.instagram.com/laikamascotas/" target="_blank" rel="noopener noreferrer">Ver en Instagram ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand">Manos por Venezuela</div>
+      <p class="disclaimer">Una iniciativa independiente de la diáspora. Esta página no recopila ni guarda ningún dato: solo conecta con recursos externos. Cruzamos cada enlace con su propia fuente, pero la situación <strong style="color:var(--gold-soft)">cambia rápido</strong> — verifica antes de donar dinero.</p>
+      <p class="updated">Última actualización: 28 de junio de 2026 · Verificado con cada sitio oficial, prensa (Semana, Infobae, El Tiempo, teleSUR) y bases de ONG. Las tarjetas “sin verificar” se marcan como tales.</p>
+    </div>
+    <div class="flinks">
+      <a href="centros.html">Centros de acopio →</a>
+      <a href="buscar.html">Buscar a un familiar →</a>
+      <a href="donar.html">Dónde donar →</a>
+    </div>
+  </div>
+</footer>
+
+<script src="cifras.js"></script>
+<script>
+  (function(){
+    const track = document.getElementById('tickerTrack');
+    if (!track || typeof cifras === 'undefined') return;
+    const filas = cifras.grupos.flatMap(g => g.filas);
+    const item = (f, hidden) => `<span class="titem"${hidden ? ' aria-hidden="true"' : ''}><span class="tn">${f.n}</span><span class="tl">${f.t}</span></span>`;
+    // two copies → seamless loop (the second is hidden from screen readers)
+    track.innerHTML = filas.map(f => item(f, false)).join('') + filas.map(f => item(f, true)).join('');
+  })();
+</script>
+
+<!-- Dedicatoria a Tsunami, perra rescatista -->
+<a class="dedi" href="#mascotas" title="Conoce a Tsunami en la sección de Mascotas">
+  <span class="paw">🐾</span>
+  <span class="t"><span class="k">Con gratitud</span><b>Tsunami</b><span class="s">y cada nariz que busca vidas</span></span>
+</a>
+
+</body>
+</html>
