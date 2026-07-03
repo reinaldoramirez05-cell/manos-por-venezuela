@@ -37,7 +37,7 @@
   .nav a:hover{color:var(--gold-soft)}
   .nav a.active{color:var(--gold-soft);position:relative}
   .nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;background:var(--gold);border-radius:2px}
-  @media(max-width:760px){.bar{flex-wrap:wrap;gap:11px}.nav{order:3;width:100%;flex-wrap:wrap;gap:9px 18px;padding:9px 0 2px;margin-top:4px;border-top:1px solid rgba(255,255,255,.08)}}
+  @media(max-width:760px){.bar{flex-wrap:wrap;gap:11px}.nav{order:3;width:100%;flex-wrap:wrap;gap:3px 20px;padding:6px 0 2px;margin-top:4px;border-top:1px solid rgba(255,255,255,.08)}.nav a{padding:7px 0}}
 
   /* hero */
   .hero{background:radial-gradient(1200px 380px at 78% -40%, rgba(232,178,58,.16), transparent 60%),var(--night);color:var(--bone);padding:54px 0 50px}
@@ -182,10 +182,10 @@
   <div class="wrap bar">
     <a class="brand" href="index.html"><span class="dot"></span>Manos por Venezuela</a>
     <nav class="nav">
+      <a href="index.html">Inicio</a>
       <a href="centros.html" class="active">Centros de acopio</a>
-      <a href="index.html">Recursos</a>
-      <a href="#cuentas">Cuentas oficiales</a>
       <a href="buscar.html">Buscar a un familiar</a>
+      <a href="#cuentas">Cuentas oficiales</a>
     </nav>
     <div class="hend"><span class="lang"><span class="on" aria-current="true" lang="es">ES</span><a href="en/centros.html" hreflang="en" lang="en" aria-label="Switch to English">EN</a></span><a href="donar.html" class="chip solid" style="padding:9px 16px;font-size:.84rem">Donar y ayudar →</a></div>
   </div>

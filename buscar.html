@@ -49,7 +49,7 @@
   .nav a:hover{color:var(--gold-soft)}
   .nav a.active{color:var(--gold-soft);position:relative}
   .nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;background:var(--gold);border-radius:2px}
-  @media(max-width:680px){.bar{flex-wrap:wrap;gap:11px}.nav{order:3;width:100%;flex-wrap:wrap;gap:9px 18px;padding:9px 0 2px;margin-top:4px;border-top:1px solid rgba(255,255,255,.08)}}
+  @media(max-width:760px){.bar{flex-wrap:wrap;gap:11px}.nav{order:3;width:100%;flex-wrap:wrap;gap:3px 20px;padding:6px 0 2px;margin-top:4px;border-top:1px solid rgba(255,255,255,.08)}.nav a{padding:7px 0}}
 
   /* ---------- hero ---------- */
   .hero{
@@ -206,9 +206,9 @@
   <div class="wrap bar">
     <a class="brand" href="index.html"><span class="dot"></span>Manos por Venezuela</a>
     <nav class="nav">
-      <a href="buscar.html" class="active">Buscar a un familiar</a>
-      <a href="index.html">Recursos</a>
+      <a href="index.html">Inicio</a>
       <a href="centros.html">Centros de acopio</a>
+      <a href="buscar.html" class="active">Buscar a un familiar</a>
       <a href="#ciudadanas">Plataformas ciudadanas</a>
       <a href="#oficiales">Canales oficiales</a>
     </nav>
