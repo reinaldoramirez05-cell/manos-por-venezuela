@@ -6,27 +6,27 @@
    English = campos `_en` (n_en, t_en, l_en, titulo_en, nota_en, actualizado_en).
    El hero toma sus números de `grupos` por `ref`; en `l` puedes intercalar otra cifra con {id}. */
 const cifras = {
-  actualizado: "28 de junio de 2026",
-  actualizado_en: "June 28, 2026",
+  actualizado: "3 de julio de 2026",
+  actualizado_en: "July 3, 2026",
   grupos: [
     { titulo:"Víctimas y desplazados", titulo_en:"Casualties & displaced", filas:[
-      { id:"fallecidos",   n:"1.450",   n_en:"1,450",   t:"fallecidos",             t_en:"dead",                  l:"fallecidos confirmados",                                          l_en:"confirmed dead" },
-      { id:"heridos",      n:"3.150",   n_en:"3,150",   t:"heridos",                t_en:"injured",               l:"personas heridas",                                                l_en:"people injured" },
-      { id:"sinLocalizar", n:"+50.000", n_en:"50,000+", t:"sin localizar",          t_en:"unaccounted for",       l:"personas aún sin localizar",                                      l_en:"people still unaccounted for" },
-      { id:"desplazados",  n:"12.721",  n_en:"12,721",  t:"desplazados",            t_en:"displaced",             l:"desplazados en refugios temporales",                              l_en:"displaced in temporary shelters" }
+      { id:"fallecidos",   n:"2.595",   n_en:"2,595",   t:"fallecidos",             t_en:"dead",                  l:"fallecidos confirmados",                                          l_en:"confirmed dead" },
+      { id:"heridos",      n:"+12.500", n_en:"12,500+", t:"heridos",                t_en:"injured",               l:"personas heridas",                                                l_en:"people injured" },
+      { id:"sinLocalizar", n:"+50.000", n_en:"50,000+", t:"sin localizar",          t_en:"unaccounted for",       l:"personas aún sin localizar (ONU)",                                l_en:"people still unaccounted for (UN)" },
+      { id:"desplazados",  n:"+44.000", n_en:"44,000+", t:"desplazados",            t_en:"displaced",             l:"personas desplazadas: viviendas destruidas o inhabitables",       l_en:"people displaced: homes destroyed or uninhabitable" }
     ]},
     { titulo:"Daños a edificaciones", titulo_en:"Building damage", filas:[
-      { id:"colapsados", n:"189",    n_en:"189",    t:"edificios colapsados",      t_en:"buildings collapsed",  l:"edificios colapsados por completo, en su mayoría multifamiliares", l_en:"buildings fully collapsed, mostly apartment blocks" },
-      { id:"graves",     n:"585",    n_en:"585",    t:"con daño grave",            t_en:"severely damaged",     l:"con daño estructural grave",                                      l_en:"with severe structural damage" },
-      { id:"infra",      n:"~1.423", n_en:"~1,423", t:"infraestructuras afectadas", t_en:"structures impacted", l:"infraestructuras afectadas: viviendas, hospitales y escuelas",     l_en:"structures impacted: homes, hospitals and schools" }
+      { id:"colapsados", n:"189",     n_en:"189",     t:"edificios colapsados",       t_en:"buildings collapsed",  l:"edificios colapsados por completo, en su mayoría multifamiliares", l_en:"buildings fully collapsed, mostly apartment blocks" },
+      { id:"graves",     n:"585",     n_en:"585",     t:"con daño grave",             t_en:"severely damaged",     l:"con daño estructural grave",                                      l_en:"with severe structural damage" },
+      { id:"infra",      n:"~59.000", n_en:"~59,000", t:"edificaciones dañadas",      t_en:"buildings damaged",    l:"edificaciones dañadas (estimación satelital, NASA)",              l_en:"buildings damaged (NASA satellite estimate)" }
     ]},
     { titulo:"Niñez", titulo_en:"Children", filas:[
       { id:"ninosExpuestos", n:"3,9 M",   n_en:"3.9M",    t:"niños expuestos",     t_en:"children exposed",   l:"niños vivían en las zonas de sacudida severa",          l_en:"children lived in the severe-shaking zones" },
       { id:"ninosNecesidad", n:"680.000", n_en:"680,000", t:"niños en necesidad",  t_en:"children in need",   l:"niños necesitan ayuda y protección urgente (UNICEF)",   l_en:"children need urgent aid and protection (UNICEF)" }
     ]},
     { titulo:"Mascotas", titulo_en:"Pets", filas:[
-      { id:"mascotas", n:"Miles",   n_en:"Thousands", t:"mascotas afectadas", t_en:"pets affected",     l:"mascotas y animales callejeros desplazados o atrapados",                                            l_en:"pets and street animals displaced or trapped" },
-      { id:"caninas",  n:"Decenas", n_en:"Dozens",    t:"unidades caninas",   t_en:"K-9 search units",  l:'de unidades caninas de búsqueda activas entre los escombros. <a href="index.html#mascotas">Cómo ayudar →</a>', l_en:'K-9 search units active in the rubble. <a href="index.html#mascotas">How to help →</a>' }
+      { id:"mascotas", n:"Miles", n_en:"Thousands", t:"mascotas afectadas", t_en:"pets affected",     l:"mascotas y animales callejeros desplazados o atrapados",                                                       l_en:"pets and street animals displaced or trapped" },
+      { id:"caninas",  n:"+160",  n_en:"160+",      t:"unidades caninas",   t_en:"K-9 search units",  l:'unidades caninas de búsqueda desplegadas entre los escombros. <a href="index.html#mascotas">Cómo ayudar →</a>', l_en:'K-9 search units deployed in the rubble. <a href="index.html#mascotas">How to help →</a>' }
     ]}
   ],
   hero: [
@@ -34,8 +34,8 @@ const cifras = {
     { ref:"sinLocalizar",   l:"personas aún sin localizar (muchas, incomunicadas)",   l_en:"still unaccounted for (many simply out of contact)" },
     { ref:"ninosNecesidad", l:"niños necesitan ayuda urgente (UNICEF)",               l_en:"children need urgent aid (UNICEF)" }
   ],
-  nota: "Varían según la fuente y la hora. Que más de 50.000 personas figuren como “sin localizar” no quiere decir 50.000 fallecidos: con las comunicaciones caídas, muchas simplemente están incomunicadas. En las ciudades costeras más golpeadas, hasta un tercio de las estructuras resultó dañado. Entre las víctimas hay niños, aunque todavía no se ha publicado un desglose oficial por edad.",
-  nota_en: "These figures vary by source and by the hour. More than 50,000 people listed as “unaccounted for” does not mean 50,000 dead: with communications down, many are simply out of contact. In the hardest-hit coastal cities, up to a third of structures were damaged. Children are among the victims, though no official breakdown by age has been published yet."
+  nota: "Varían según la fuente y la hora, y han subido con rapidez durante la primera semana. Que la ONU cifre en más de 50.000 las personas “sin localizar” no quiere decir 50.000 fallecidos: con las comunicaciones caídas, muchas simplemente están incomunicadas. El análisis satelital de la NASA estima unas 59.000 edificaciones dañadas. Entre las víctimas hay niños: 16 murieron en el colapso de un hospital infantil en Catia La Mar.",
+  nota_en: "These figures vary by source and by the hour, and rose sharply through the first week. The UN's estimate of more than 50,000 people “unaccounted for” does not mean 50,000 dead: with communications down, many are simply out of contact. NASA satellite analysis estimates some 59,000 buildings damaged. Children are among the victims: 16 died when a children's hospital collapsed in Catia La Mar."
 };
 
 const statById = (id) => {
